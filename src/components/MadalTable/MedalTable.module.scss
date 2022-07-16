@@ -1,0 +1,17 @@
+.partecipant{
+  background: lightblue;
+  padding: 2rem;
+  margin-bottom: 30px;
+  position:absolute;
+  left: 0;
+  border-radius: 0 25px 25px 0;
+  transition: all 2s;
+  text-align: right;
+}
+.partecipantsContainer{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  min-height: 100vh;
+  position:relative;
+}

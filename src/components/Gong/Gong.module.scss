@@ -1,0 +1,39 @@
+.gong{
+  position: absolute;
+  width: 50vh;
+  height: 50vh;
+  background: orange;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  top: 25vh;
+  left: 50%;
+  justify-content: center;
+  flex-direction: column;
+  text-transform: uppercase;
+  transform: translate(-50%,0)  scale(.1,.1) rotate(-3600deg);
+  animation: appear 7s forwards;
+  background-size: cover;
+  // background: url('/assets/images/gong-bg.png') no-repeat center center;
+  animation-timing-function: jump-end;
+}
+@keyframes appear{
+  0%{
+    opacity: 0;
+    transform: translate(-50%,0) scale(.1,.1) rotate(-3600deg);
+  }
+  75%{
+    opacity: 1;
+    transform: translate(-50%,0) scale(1,1) rotate(150deg);
+  }
+  90%{
+    transform: translate(-50%,0) scale(1,1) rotate(-45deg);
+  }
+  96%{
+    transform: translate(-50%,0) scale(1,1) rotate(15deg);
+  }
+  100%{
+    opacity: 1;
+    transform: translate(-50%,0) scale(1,1) rotate(0deg);
+  }
+}

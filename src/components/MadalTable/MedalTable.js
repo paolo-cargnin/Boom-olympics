@@ -2,14 +2,22 @@ import { useState, useContext, useEffect } from "react";
 import EditionContext from "../../EditionContext";
 import css from './MedalTable.module.scss'
 
+import paolo from '../../assets/images/paolo.png'
+import caterina from '../../assets/images/caterina.png'
+import diana from '../../assets/images/diana.png'
+import oscar from '../../assets/images/oscar.png'
+
+const partecipantImages = { paolo, caterina, oscar, diana }
+
 const MedalTable = () => {
   const { edition, partecipants } = useContext(EditionContext);
   const [orderedPartecipants, setOrderedPartecipants] = useState(partecipants)
   useEffect(() => {
     // set the positions
-    const ordered = orderedPartecipants.sort((a, b) => edition[b] - 1 - edition[a])
-    setOrderedPartecipants(ordered)
-  }, [edition, orderedPartecipants])
+    setOrderedPartecipants((orderedPartecipants) => {
+      return orderedPartecipants.sort((a, b) => edition[b] - edition[a])
+    })
+  }, [edition])
 
   const partecipantPosition = (partecipant) => {
     return orderedPartecipants.reduce((acc, p, i) => {
@@ -42,6 +50,7 @@ const MedalTable = () => {
       }}>
         {partecipant}: {edition[partecipant]} <br />
         position: {partecipantPosition(partecipant) + 1}
+        <img src={partecipantImages[partecipant]} alt="" />
       </div>
     ))}
   </div >

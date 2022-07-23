@@ -1,5 +1,5 @@
 .partecipant{
-  background: lightblue;
+  background: #249b0b;
   padding: 2rem;
   margin-bottom: 30px;
   position:absolute;
@@ -8,6 +8,11 @@
   transition: all 2s;
   text-align: right;
   height: 20vh;
+  margin-top: 2vh;
+  font-size: 90px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
   img{
     position: absolute;
     top: 0;
@@ -21,4 +26,7 @@
   flex-direction: column;
   min-height: 100vh;
   position:relative;
+  background: url('/assets/images/bg.png') no-repeat center center;
+  background-size: cover;;
+
 }

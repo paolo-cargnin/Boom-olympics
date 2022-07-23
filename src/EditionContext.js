@@ -3,27 +3,38 @@ import { supabase } from "./supabaseClient";
 
 const EditionContext = createContext(null)
 
-const useSubscription = (callback) => {
+// const useSubscription = (callback) => {
 
-  /* eslint-disable react-hooks/exhaustive-deps */
-  useEffect(() => {
-    supabase
-      .from('*')
-      .on('*', callback)
-      .subscribe()
-    // return () => {
-    //   console.log('unsubscribe')
-    //   subscription.unsubscribe()
-    // }
-  }, [])
-  /* eslint-enable react-hooks/exhaustive-deps */
-}
+//   /* eslint-disable react-hooks/exhaustive-deps */
+//   useEffect(() => {
+//     supabase
+//       .from('editions')
+//       .on('UPDATE', callback)
+//       .subscribe()
+//     // return () => {
+//     //   console.log('unsubscribe')
+//     //   subscription.unsubscribe()
+//     // }
+//   }, [])
+//   /* eslint-enable react-hooks/exhaustive-deps */
+// }
 
 export const EditionProvider = ({ children }) => {
   const [edition, setEdition] = useState(null)
 
-  useSubscription(payload => {
-    setEdition(payload.new)
+  useEffect(payload => {
+    const interval = setInterval(async () => {
+      const { data, error } = await supabase.from('editions').select()
+      if (error) {
+        return console.log(error)
+      }
+      const lastStatus = data[data.length - 1]
+      setEdition(lastStatus)
+      // setEdition(payload.new)
+    }, 1000)
+    return () => {
+      clearInterval(interval)
+    }
   });
   const partecipants = ['diana', 'paolo', 'caterina', 'oscar']
 

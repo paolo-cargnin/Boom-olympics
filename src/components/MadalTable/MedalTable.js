@@ -48,8 +48,8 @@ const MedalTable = () => {
         top: partecipantPosition(partecipant) * 25 + '%',
         width: partecipantLeft(partecipant) + '%'
       }}>
-        {partecipant}: {edition[partecipant]} <br />
-        position: {partecipantPosition(partecipant) + 1}
+        {edition[partecipant]} <br />
+        {/* position: {partecipantPosition(partecipant) + 1} */}
         <img src={partecipantImages[partecipant]} alt="" />
       </div>
     ))}
